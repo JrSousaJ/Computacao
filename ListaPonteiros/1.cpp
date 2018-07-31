@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-//corrigir questão do vetor pra armazenar os dados
+//corrigir questão do vetor pra armazenar os dados da decomposicao
 using namespace std;
 
 int fatr(int v[10],int n,int *pont)
