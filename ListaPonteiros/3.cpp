@@ -1,20 +1,21 @@
 #include<bits/stdc++.h>
 using namespace std;
-vector<string>sz;
-void semidnv(char *c1,char *c2)
+int semidnv(char *c1,char *c2, int n)
 {
     int c=0;
+    c1+=n;
+    while(*c1!=' ')
+    {
+        if(*c1==' ')break;
+        *c2=*c1;
+        c1++;
+        c2++;
+        c++;
 
-         while(*c1!='\0')
-        {
-            if(*c1==' ')*c1='\n';
-            *c2=*c1;
-            c1++;
-            c2++;
-            c++;
+    }
+    *c2='\0';
+    return c;
 
-        }
-         *c2='\0';
 }
 int main()
 {
@@ -22,7 +23,12 @@ int main()
     int z,c=0;
     scanf(" %[^\n]",s);
     z=strlen(s);
-    semidnv(s,s1);
-    printf("%s",s1);
+    for(int i=0;i<z-1;i++)
+    {
+        i+=semidnv(s,s1,i);
+        printf("%s\n",s1);
+    }
+    
+   
     return 0;
 }
