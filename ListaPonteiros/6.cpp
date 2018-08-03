@@ -15,6 +15,7 @@ void ord(int *a,int *b,int *c)
 }
 int main()
 {
+    //Fiz com vetor para tirar algumas dúvidas no que eu poderia usar ;v
     for(int i=0;i<3;i++)scanf("%d",&v[i]);
     ord(&v[0],&v[1],&v[2]);
     printf("A:%d, B:%d, C:%d\n",v[0],v[1],v[2]);
