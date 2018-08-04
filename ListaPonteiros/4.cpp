@@ -19,7 +19,7 @@ int main()
     else if(*ptr==g)printf("Tem valor de 'g'\n");
     else if(*ptr==s[0])printf("Tem valor de 's' na posicao 0\n");
     else if(*ptr==x)printf("Tem valor de 'x'\n");
-
+    else printf("Nao conincidiu com nenhum endereco");
 
 
    //Isso acontece pois eu andei 1 posição na memória, sendo assim ele apontou para a proxima variavel na memória
