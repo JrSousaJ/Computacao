@@ -19,7 +19,7 @@ int semidnv(char *c1,char *c2, int n)
 }
 int main()
 {
-    char s[100],s1[100];
+    char s[1000],s1[1000];
     int z,c=0;
     scanf(" %[^\n]",s);
     z=strlen(s);
