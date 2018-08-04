@@ -10,7 +10,6 @@ int main()
     int *ptr=&a;
     cout << *ptr << endl;
     ptr++;
-    if(*ptr!=a)printf("O valor do ponteiro agora nao tem mais o valor de a e sim da variavel declarada apos ele, no caso a variavel b: %d\n",*ptr);
     if(*ptr==a)printf("Tem o valor de 'a'\n");
     else if(*ptr==b)printf("Tem valor de 'b'\n");
     else if(*ptr==c)printf("Tem valor de 'c'\n");
@@ -23,7 +22,7 @@ int main()
 
 
 
-   //Isso acontece pois eu andei 1 posição na memória, sendo assim ele apontou para a proxima variavel na memória, no meu caso o b
+   //Isso acontece pois eu andei 1 posição na memória, sendo assim ele apontou para a proxima variavel na memória
     
    
     return 0;
