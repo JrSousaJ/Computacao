@@ -3,7 +3,8 @@
 using namespace std;
 struct comp
 {
-	string codigo,nome;
+	int codigo;
+	string nome;
 	long long int tempo;
 };
 vector<comp>v;
@@ -45,7 +46,8 @@ int main()
 	int a=6;
 	for(int i=0;i<10;i++)
 	{
-		string nome,codigo;
+		string nome;
+		int codigo;
 		int tempo,m;
 		printf("\nCodigo: ");
 		cin >> codigo;
@@ -61,6 +63,7 @@ int main()
 		printf("1-Ordenar por codigo\n");
 		printf("2-Ordenar por nome\n");
 		printf("3-Resultado final da corrida\n");
+		printf("4-Sair\n");
 		scanf("%d",&a);
 		if(a==1)
 		{
@@ -91,11 +94,12 @@ int main()
 			ordena(a);
 			for(int i=0;i<v.size();i++)
 			{
+				printf("Posicao: %d\n",i+1);
 				cout << "Codigo: " << v[i].codigo << endl;
 				cout << "Nome: " << v[i].nome << endl;
 				int m=v[i].tempo/60;
 				int seg=v[i].tempo%60;
-				cout << "Tempo: " << m << ":" << seg << endl;
+				cout << "Tempo: " << m << ":" << seg << endl << endl;
 			}
 		}
 	}
