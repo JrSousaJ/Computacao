@@ -42,13 +42,6 @@ int busca(int x)
     }
     return -1;
 }
-void deleta(int x)
-{
-    for(int i=x;i<v.size();i++)
-    {
-        swap(v[i],v[i+1]);
-    }
-}
 int main()
 {
 	int x=1;
