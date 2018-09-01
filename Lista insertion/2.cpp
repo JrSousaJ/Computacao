@@ -8,20 +8,46 @@ struct produtos
 	double preco;
 };
 vector<produtos>v;
-void ordena(int tam)
+void ordena(int tip)
 {
-	int ch;
-	for(int i=1;i<tam-tam;i++)
+	produtos ch;
+	for(int i=1;i<v.size();i++)
 	{
-		ch=v[i].tipo;
+		ch=v[i];
 		int j=i-1;
-		while(j>=0 && v[j].tipo>ch)
-		{
+		if(tip==2)
+        {
+            while(j>=0 && v[j].tipo>ch.tipo)
+            {
 			v[j+1]=v[j];
 			j--;
-		}
+            }
+        }
+        else if(tip==3)
+        {
+            while(j>=0 && v[j].codigo>ch.codigo)
+            {
+			v[j+1]=v[j];
+			j--;
+            }
+        }
 		v[j+1]=ch;
 	}
+}
+int busca(int x)
+{
+    for(int i=0;i<v.size();i++)
+    {
+        if(v[i].codigo==x)return i;
+    }
+    return -1;
+}
+void deleta(int x)
+{
+    for(int i=x;i<v.size();i++)
+    {
+        swap(v[i],v[i+1]);
+    }
 }
 int main()
 {
@@ -29,7 +55,7 @@ int main()
 	int ret=0;
 	while(x!=5)
 	{
-		printf("1-Cadastro de produtos\n");
+		printf("\n1-Cadastro de produtos\n");
 		printf("2-Consultar produtos por tipo\n");
 		printf("3-Consultar produtos por codigo\n");
 		printf("4-Remover produto da lista\n");
@@ -48,17 +74,63 @@ int main()
 			printf("\nTipo: ");
 			cin >> tipo;
 			printf("\nValor : R$");
-			scanf("%lf",preco);
+			scanf("%lf",&preco);
 			v.push_back({codigo,descricao,tipo,preco});
 		}
 		if(x==2)
 		{
-			ordena(ret);
+
+			if(!v.size())printf("Nao existem produtos cadastrados\n\n");
+			else
+            {
+                ordena(x);
+                    for(int i=0;i<v.size();i++)
+                {
+                    printf("Codigo: %d\n",v[i].codigo);
+                    cout << "Descricao: " << v[i].descricao << endl;
+                    cout << "Tipo: " << v[i].tipo << endl;
+                    printf("Valor: R$%.2lf\n\n",v[i].preco);
+                }
+
+            }
 
 		}
-	}
-	
+		if(x==3)
+		{
 
-	
+			if(!v.size())printf("Nao existem produtos cadastrados\n");
+			else
+            {
+                ordena(x);
+                for(int i=0;i<v.size();i++)
+                {
+                    printf("Codigo: %d\n",v[i].codigo);
+                    cout << "Descricao: " << v[i].descricao << endl;
+                    cout << "Tipo: " << v[i].tipo << endl;
+                    printf("Valor: R$%.2lf\n\n",v[i].preco);
+                }
+
+            }
+		}
+		else if(x==4)
+		{
+		    int ans=-1;
+            printf("Qual o codigo do produto que deseja apagar? ");
+            int a;scanf("%d",&a);
+            ans=busca(a);
+            if(ans==-1)
+            {
+                printf("Produto nao encontrado\n\n");
+            }
+            else
+            {
+                v.erase(v.begin()+ans);
+                printf("Produto apagado\n\n");
+            }
+		}
+	}
+
+
+
 	return 0;
 }
