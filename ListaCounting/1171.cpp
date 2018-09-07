@@ -1,19 +1,36 @@
 #include<bits/stdc++.h>
 
 using namespace std;
-
+void CS(int x[],int siz)
+{
+	int m[siz];
+	long long int cc[2001];memset(cc,0,sizeof cc);
+	for(int i=0;i<siz;i++)cc[x[i]]++;
+	for(int i=1;i<=2000;i++)cc[i]+=cc[i-1];
+	for(int i=0;i<siz;i++)
+	{
+		m[cc[x[i]]-1]=x[i];
+		cc[x[i]]--;
+	}
+	for(int i=0;i<siz;i++)x[i]=m[i];
+}
 int main()
 {
-	int n[2001];memset(n,0,sizeof n);
 	int x;scanf("%d",&x);
-	while(x--)
+	int v[x];
+	for(int i=0;i<x;i++)scanf("%d",&v[i]);
+	CS(v,x);
+	int at=v[0],cc=1;
+	for(int i=1;i<x;i++)
 	{
-		int y;scanf("%d",&y);
-		n[y]++;
+		if(at==v[i])cc++;
+		else
+		{
+			printf("%d aparece %d vez(es)\n",at,cc);
+			at=v[i];
+			cc=1;
+		}
 	}
-	for(int i=1;i<=2000;i++)
-	{
-		if(n[i]>0)printf("%d aparece %d vez(es)\n",i,n[i]);
-	}
+	printf("%d aparece %d vez(es)\n",at,cc);
 	return 0;
 }
