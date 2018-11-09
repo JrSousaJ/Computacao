@@ -79,6 +79,7 @@ void remove(lista *q,int pos)
         atual=(q->inicio)->prox;
         while(atual!=NULL && pos--)
         {
+        	if(!pos)break;
             anterior = atual;
             atual = atual->prox;
         }
@@ -90,6 +91,25 @@ void remove(lista *q,int pos)
         }
     }
     siz--;
+}
+void busca(lista q,int val)
+{
+	struct no *aux;
+	aux=q.inicio;
+	if(!Empty(q))
+    {
+        while(aux!=NULL)
+        {
+        	if(aux->n==val)
+        	{
+        		printf("%d encontrado\n",val);
+        		return ;
+        	}
+        	
+        	aux=aux->prox;
+        }
+    }
+    printf("Nao encontrado\n");
 }
 int main()
 {
@@ -149,8 +169,14 @@ int main()
             printf("Retirando do final\n");
              remove(&l,siz);
         }
-
-        print(l);
+        if(n==7)
+        {
+        	int x;
+       		printf("Numero a ser buscado: ");
+       		scanf("%d",&x);
+        	printf("Buscando...\n");
+        	busca(l,x);
+        }
+        if(n==8)print(l);
     }
 }
-
