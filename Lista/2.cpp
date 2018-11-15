@@ -21,7 +21,7 @@ bool Empty(lista q)
     if(q.inicio==NULL)return true;
     return false;
 }
-void inserir(lista *q,int d,int pos)
+void inserir(lista *q,int d)
 {
     struct no *aux, *atual, *anterior;
 
@@ -33,7 +33,7 @@ void inserir(lista *q,int d,int pos)
         anterior=NULL;
         atual=q->inicio;
         int c=0;
-        while(atual!=NULL  && atual->n != d)
+        while(atual!=NULL  && d > atual->n)
         {
             anterior= atual;
             atual = atual->prox;
@@ -63,6 +63,17 @@ void print(lista l)
             aux=aux->prox;
         }
     }
+}
+void concatenar(lista *q, lista *p)
+{
+    struct no *atual,*aux;
+    atual=q->inicio;
+   while(atual!=NULL)
+   {
+        aux=atual;
+        atual=atual->prox;
+   }
+    aux->prox=p->inicio;  
 }
 void remove(lista *q,int pos)
 {
@@ -95,69 +106,32 @@ void remove(lista *q,int pos)
 int main()
 {
     int n=1;
-    lista l;
-        create(&l);
-    while(n)
+    lista l,l2;
+    create(&l);
+    create(&l2);
+    int x;
+    printf("Quantos elementos deseja incluir na primeira lista? ");
+    scanf("%d",&x);
+    printf("\nIncluindo elementos na primeira lista...\n\n");
+    while(x--)
     {
-        printf("\n1-Inserir no inicio\n");
-        printf("2-Inserir no meio\n");
-        printf("3-Inserir no fim\n");
-        printf("4-Retirar do inicio\n");
-        printf("5-Retirar do meio\n");
-        printf("6-Retirar no fim\n");
-        printf("7-Buscar\n");
-        printf("8-Imprimir\n");
-        printf("0-Sair\n\n");
-        scanf("%d",&n);
-
-        if(n==1)
-        {
-            int x;
-            printf("Valor a ser inserido: ");
-            scanf("%d",&x);
-            inserir(&l,x,0);
-        }
-        if(n==2)
-        {
-            int x,y;
-            printf("Valor a ser inserido: ");
-            scanf("%d",&x);
-            printf("\nPosicao a ser inserido: ");
-            scanf("%d",&y);
-            inserir(&l,x,y);
-        }
-        if(n==3)
-        {
-            int x;
-            printf("Valor a ser inserido: ");
-            scanf("%d",&x);
-            inserir(&l,x,siz);
-        }
-        if(n==4)
-        {
-
-            printf("Retirando do comeco\n");
-            remove(&l,0);
-        }
-        if(n==5)
-        {
-            printf("Posicao a ser retirada: ");
-            int x;scanf("%d",&x);
-            remove(&l,x);
-        }
-        if(n==6)
-        {
-            printf("Retirando do final\n");
-             remove(&l,siz);
-        }
-        if(n==7)
-        {
-        	int x;
-       		printf("Numero a ser buscado: ");
-       		scanf("%d",&x);
-        	printf("Buscando...\n");
-        	busca(l,x);
-        }
-        if(n==8)print(l);
+        int a;scanf("%d",&a);
+        inserir(&l,a);
     }
+    printf("Quantos elementos deseja incluir na segunda lista? ");
+    scanf("%d",&x);
+    printf("\nIncluindo elementos na segunda lista...\n\n");
+    while(x--)
+    {
+        int a;scanf("%d",&a);
+        inserir(&l2,a);
+    }
+    printf("Listas sem concatenar: \n");
+    printf("Lista 1\n");
+    print(l);
+    printf("Lista 2\n");
+    print(l2);
+    printf("Exibindo as listas concatenadas\n");
+    concatenar(&l,&l2);
+    print(l);
 }
