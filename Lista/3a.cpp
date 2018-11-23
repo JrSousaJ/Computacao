@@ -7,15 +7,18 @@ struct no
 {
     int n;
     struct no *prox;
+    struct no *ant;
 };
 typedef struct
 {
     struct no *inicio;
+    struct no *fim;
 }lista;
 void create(lista *l)
 {
     siz=0;
     l->inicio=NULL;
+    l->fim=NULL;
 }
 bool Empty(lista q)
 {
@@ -24,32 +27,25 @@ bool Empty(lista q)
 }
 void inserir(lista *q,int d)
 {
-    struct no *aux, *atual, *anterior;
+    struct no *aux,*anterior;
 
-    aux=(struct no *)malloc(sizeof(struct no));
-    if(aux!=NULL)
+    if(q->inicio == NULL)
     {
-        aux->n = d;
+        aux=(struct no*)malloc(sizeof(struct no));
+        aux->n=d;
+        q->inicio=aux;
+        q->fim=aux;
         aux->prox=NULL;
-        anterior=NULL;
-        atual=q->inicio;
-        int c=0;
-        while(atual!=NULL  && d > atual->n)
-        {
-            anterior= atual;
-            atual = atual->prox;
-        }
-        if(anterior == NULL)
-        {
-            aux->prox = q->inicio;
-            q->inicio = aux;
-        }
-        else
-        {
-            anterior->prox=aux;
-            aux->prox=atual;
-        }
+        aux->ant=NULL;
+        siz++;
+        return ;
     }
+    aux=(struct no*)malloc(sizeof(struct no));
+    aux->n=d;
+    aux->prox=NULL;
+    aux->ant=q->fim;
+    q->fim->prox=aux;
+    q->fim=aux;
     siz++;
 }
 void print(lista l)
@@ -65,71 +61,53 @@ void print(lista l)
         }
     }
 }
-void remover(lista *q,int pos)
+void remover(lista *q,int d)
 {
     struct no *aux, *atual, *anterior;
-    if(pos==0)
+    if(d==(q->inicio)->n)
     {
         aux=q->inicio;
-        cout << aux->n << endl;
-      
-        q->inicio = (q->inicio)->prox;
+       if(q->inicio->prox==NULL)
+       {
+            q->inicio=NULL;
+            q->fim=NULL;
+       }
+       else
+       {
+        q->inicio = aux->prox;
+        q->inicio=ant=aux->ant;
+       }
         free(aux);
     }
     else
     {
         anterior = q->inicio;
         atual=(q->inicio)->prox;
-        while(atual!=NULL)
+        while(atual!=NULL && atual->dado!=d)
         {
-        	if(!pos)break;
             anterior = atual;
             atual = atual->prox;
         }
         if(atual!=NULL)
         {
-
             aux= atual;
-            
             anterior->prox = atual->prox;
+            atual->prox->ant=atual->ant;
+            if(atual->prox==NULL)
+            {
+                anterior->prox=NULL;
+                q->fim=anterior;
+            }
             free(aux);
         }
     }
     siz--;
 }
-int busca(lista q,int val)
-{
-	struct no *aux;
-	aux=q.inicio;
-	if(!Empty(q))
-    {
-        while(aux!=NULL && val--)
-        {
-        	if(!val)return aux->n;
-        	aux=aux->prox;
-        }
-    }
-    printf("Nao encontrado\n");
-}
 void reverter(lista *q)
 {
-	struct no *aux,*aux2,*t;
-	aux=NULL;
-	aux2=q->inicio;
-	t=aux2->prox;
-	while(aux2!=NULL)
-	{
-		aux2->prox=aux;
-		aux=aux2;
-		aux2=t;
-		if(t!=NULL)
-		{
-			t=t->prox;
-		}
-	}
-	t=q->inicio;
-	t->prox=NULL;
-	q->inicio=t;
+	
+
+
 }
 int main()
 {
