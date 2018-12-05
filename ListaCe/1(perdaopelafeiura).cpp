@@ -10,9 +10,9 @@ typedef struct
 {
 	struct no *inicio;
 	struct no *fim;
-} listaC;
+}listaC;
 
-void create(listaC *q) // create
+void create(listaC *q)
 {
     q->inicio=NULL;
 }
@@ -60,7 +60,7 @@ void imprime(listaC q)
 	}
 }
 
-int remover(listaC *q, int d) // remover
+void remover(listaC *q, int d)
 {
 	struct no *aux, *atual, *anterior;
 	if (d == (q->inicio)->n)
@@ -213,7 +213,7 @@ void concatenar(listaC *q1, listaC *q2){
 	
 	aux2 = q2->inicio;
 	do{
-		Inserir_Fim(q1, aux2->n);
+		insrfim(q1, aux2->n);
 		aux2 = aux2->prox;
 	}while(aux2 != q2->inicio);
 }
@@ -224,8 +224,8 @@ void concatenar(listaC *q1, listaC *q2){
 int main()
 {	
 	int x=1;
-	ListaC l;
-	Lista aux;
+	listaC l;
+	listaC aux;
 	create(&l);
 	create(&aux);
 	while(x)
