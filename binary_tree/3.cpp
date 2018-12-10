@@ -58,11 +58,16 @@ void posOrder(Arvore t)
 		printf("%c", t->n);
 	}
 }
-int Contaum(Arvore t)
+void Contaum(Arvore t)
 {
 	int c=1;
 	if(t==NULL)return 0;
-	if(t->esq!=NULL && t->dir==NULL || t->esq==NULL && t->dir!=NULL)return Contaum(t->dir)+Contaum(t->esq)+c;
+	if(t->esq!=NULL && t->dir==NULL || t->esq==NULL && t->dir!=NULL)
+	{
+		printf("%d\n",t->n);
+		Contaum(t->dir);
+		Contaum(t->esq);
+	}
 }
 int ContaFolhas(Arvore t) 
 {
@@ -83,5 +88,5 @@ int main()
 		int aa;scanf("%d",&aa);
 		insertNode(&a,aa);
 	}
-	printf("Numero nos com duas sub-arvores: %d\n",Contaum(a));
+	Contaum(a);
 }
