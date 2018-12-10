@@ -68,7 +68,7 @@ void ContaFiD(Arvore t)
 {
 	
 	if(t==NULL)return ;
-	if(t->esq!=NULL)c++;
+	if(t->dir!=NULL)c++;
 	ContaFiD(t->dir);
 	ContaFiD(t->esq);
 }
