@@ -60,6 +60,7 @@ void posOrder(Arvore t)
 }
 void emniveis(Arvore t)
 {
+    //bfs bolada
     if(t==NULL)return ;
 
     queue<Arvore>v;
@@ -71,6 +72,7 @@ void emniveis(Arvore t)
         printf("%d\n",aux->n);
         if(aux->dir!=NULL)v.push(aux->dir);
         if(aux->esq!=NULL)v.push(aux->esq);
+        
     }
 
 }
