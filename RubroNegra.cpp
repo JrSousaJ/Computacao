@@ -139,7 +139,8 @@ void prefix(rn t)
 {
 	if(t!=rubro && t!=NULL)
 	{
-		printf("%d\n",t->id);
+		if(t->cor=='V')printf("%d - Vermelho\n",t->id);
+		else printf("%d - Preto\n",t->id);
 		prefix(t->esq);
 		prefix(t->dir);
 	}
