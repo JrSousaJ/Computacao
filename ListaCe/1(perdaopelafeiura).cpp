@@ -272,7 +272,7 @@ int main()
 		if(x==8)cout << som(&l) << endl;
 		if(x==9)copia(&l,&aux);
 		if(x==10)invert();
-		if(x==1)
+		if(x==11)
 		{
 			concatenar(&l,&aux);
 			imprime(l);
