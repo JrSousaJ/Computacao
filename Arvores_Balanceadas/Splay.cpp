@@ -110,24 +110,25 @@ void Inserir(int v)
             else
             {
                 P->left=(Node *)malloc(sizeof(Node));
-				P->left->p=P;
-				P->left->right=NULL;
-				P->left->left=NULL;
-				P->left->v=v;
-				P=P->left;
-				break;
+		P->left->p=P;
+		P->left->right=NULL;
+		P->left->left=NULL;
+		P->left->v=v;
+		P=P->left;
+		break;
             }
         }
         else
         {
                 if(P->right)P=P->right;
+		
                 P->right=(Node *)malloc(sizeof(Node));
-				P->right->p=P;
-				P->right->left=NULL;
-				P->right->right=NULL;
-				P->right->v=v;
-				P=P->right;
-				break;
+		P->right->p=P;
+		P->right->left=NULL;
+		P->right->right=NULL;
+		P->right->v=v;
+		P=P->right;
+		break;
         }
     }
     Splay(P);
