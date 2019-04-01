@@ -48,32 +48,15 @@ int main()
         }
     }
     printf("A string %s ficou com %d bits depois da compactacao e ficou assim : ",s,v.size());
-    vector<int> desc;
+    FILE *pf=fopen("compactado.txt","w");
+
     for(int i=0;i<v.size();i++)
     {
-        desc.push_back(toDec(v[i]));
         printf("%c",toDec(v[i]));
+        fprintf(pf,"%c",toDec(v[i]));
     }
+    fclose(pf);
     printf("\n");
-    printf("Descompactando ...\n");
-    v.clear();
-    for(int i=0;i<desc.size();i++)
-    {
-        v.push_back(toBin(desc[i]));
-    }
-    for(int i=0;i<v.size();i++)
-    {
-        string ans;
-        if(v[i].size()==6)ans+='a';
-        for(int j=0;j<v[i].size();j+=2)
-        {
-            if(v[i][j]=='0' && v[i][j+1]=='0')ans+='a';
-            else if(v[i][j]=='0' && v[i][j+1]=='1')ans+='b';
-            else if(v[i][j]=='1' && v[i][j+1]=='0')ans+='c';
-            else if(v[i][j]=='1' && v[i][j+1]=='1')ans+='d';
-        }
-        cout << ans;
-    }
-    printf("\n");
+
     return 0;
 }
