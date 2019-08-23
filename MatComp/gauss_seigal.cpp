@@ -1,6 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/*
+	Aluno: Jairo Sousa Júnior
+	Disciplina: Matemática Computacional
+	Conteúdo: Implementação do método de Gauss Seigal
+*/
+
 const int MAXN = 10005;
 
 vector<vector<double> >AUX;
