@@ -1,6 +1,13 @@
 #include<bits/stdc++.h>
 
 using namespace std;
+
+/*
+	Aluno: Jairo Sousa Júnior
+	Disciplina: Matemática Computacional
+	Conteúdo: Implementação do método dos mínimos quadrados
+*/
+
 struct pontos
 {
 	double x,y;
